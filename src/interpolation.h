@@ -45,8 +45,6 @@ public:
             const std::vector<std::vector<std::array<double, 6>>> &eos_data
             ) {
         std::pair<unsigned int, unsigned int> neighbors = get_neighbors(val1, val2, var1_vect, var2_vect);
-//        std::cout << std::to_string(neighbors.first) << std::endl;
-//        std::cout << std::to_string(neighbors.second) << std::endl;
 
         // If we are not at the boundaries of the data table
         if ((neighbors.first < var1_vect.size() - 1) &&
@@ -63,7 +61,6 @@ public:
                                               xi * (1 - eta) * eos_data[neighbors.first][neighbors.second - 1][property_index] +
                                               (1 - xi) * eta * eos_data[neighbors.first - 1][neighbors.second][property_index] +
                                               xi * eta * eos_data[neighbors.first][neighbors.second][property_index];
-            std::cout << std::to_string(interpolated_value) << std::endl;
             return interpolated_value;
         } else {
             // Return the boundary value

@@ -5,7 +5,6 @@
 
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
 
     std::vector<double> var1_vect;
     std::vector<double> var2_vect;
@@ -13,7 +12,8 @@ int main() {
     const int property_index = 5;
 
     std::vector<std::vector<std::array<double, 6>>> eos_data = io::readANEOSfile::readfile(var1_vect, var2_vect, var3_vect, property_index);
-    BilinearInterpolation::interpolate( 1.91611522E+03, 9.84467337E+04, var1_vect, var2_vect, var3_vect, property_index, eos_data);
+    double interpolated_value = BilinearInterpolation::interpolate( 1.91611522E+03, 9.84467337E+04, var1_vect, var2_vect, var3_vect, property_index, eos_data);
+    std::cout << std::to_string(interpolated_value) << std::endl;
     
 //    for (double & i : var1_vect)
 //        std::cout << i << ' ';
