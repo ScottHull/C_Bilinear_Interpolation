@@ -1,0 +1,4 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=/opt/local/bin/g++-mp-8 -G "CodeBlocks - Unix Makefiles" /Users/scotthull/Desktop/interpolation
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/scotthull/Desktop/interpolation/cmake-build-debug

@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/scotthull/Desktop/interpolation/main.cpp
+iostream
+-
+src/interpolation.h
+/Users/scotthull/Desktop/interpolation/src/interpolation.h
+src/io.h
+/Users/scotthull/Desktop/interpolation/src/io.h
+
+/Users/scotthull/Desktop/interpolation/src/interpolation.h
+sstream
+-
+vector
+-
+iostream
+-
+array
+/Users/scotthull/Desktop/interpolation/src/array
+
+/Users/scotthull/Desktop/interpolation/src/io.h
+vector
+-
+array
+-
+sstream
+-
+fstream
+-
+
