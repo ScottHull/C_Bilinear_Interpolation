@@ -14,7 +14,9 @@ namespace io{
                 std::vector<double> &var2_vector,
                 std::vector<double> &var3_vector,
                 const std::string &file_path,
-                const int property_index
+                const int val1_property_index,
+                const int val2_property_index,
+                const int val3_property_index
                 ) {
 
             std::vector<std::vector<std::array<double, 6>>> eos_data;
@@ -68,11 +70,11 @@ namespace io{
                     while (stream >> tmp) {
                         eos_data[line_index][column_index][field_index] = tmp;
 
-                        if (column_index == 0 && field_index == 0)
+                        if (column_index == 0 && field_index == val1_property_index)
                             var1_vector.push_back(tmp);
-                        if (line_index == 0 && field_index == 1)
+                        if (line_index == 0 && field_index == val2_property_index)
                             var2_vector.push_back(tmp);
-                        if (line_index == 0 && field_index == property_index)
+                        if (line_index == 0 && field_index == val3_property_index)
                             var3_vector.push_back(tmp);
 
                         ++field_index;

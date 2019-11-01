@@ -41,7 +41,7 @@ public:
             const std::vector<double> &var1_vector,
             const std::vector<double> &var2_vector,
             const std::vector<double> &var3_vector,
-            const unsigned int property_index,
+            const unsigned int val3_property_index,
             const std::vector<std::vector<std::array<double, 6>>> &eos_data
             ) {
         std::pair<unsigned int, unsigned int> neighbors = get_neighbors(val1, val2, var1_vector, var2_vector);
@@ -57,14 +57,14 @@ public:
                              (var2_vector[neighbors.second] - var2_vector[neighbors.second-1]);
 
             // use these coordinates for a bilinear interpolation
-            const double interpolated_value = (1 - xi) * (1 - eta) * eos_data[neighbors.first - 1][neighbors.second - 1][property_index] +
-                                              xi * (1 - eta) * eos_data[neighbors.first][neighbors.second - 1][property_index] +
-                                              (1 - xi) * eta * eos_data[neighbors.first - 1][neighbors.second][property_index] +
-                                              xi * eta * eos_data[neighbors.first][neighbors.second][property_index];
+            const double interpolated_value = (1 - xi) * (1 - eta) * eos_data[neighbors.first - 1][neighbors.second - 1][val3_property_index] +
+                                              xi * (1 - eta) * eos_data[neighbors.first][neighbors.second - 1][val3_property_index] +
+                                              (1 - xi) * eta * eos_data[neighbors.first - 1][neighbors.second][val3_property_index] +
+                                              xi * eta * eos_data[neighbors.first][neighbors.second][val3_property_index];
             return interpolated_value;
         } else {
             // Return the boundary value
-            const double interpolated_value = eos_data[neighbors.first][neighbors.second][property_index];
+            const double interpolated_value = eos_data[neighbors.first][neighbors.second][val3_property_index];
             return interpolated_value;
         }
     };

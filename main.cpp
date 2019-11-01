@@ -6,14 +6,21 @@
 
 int main() {
 
-    std::vector<double> var1_vector;
-    std::vector<double> var2_vector;
-    std::vector<double> var3_vector;
-    const int property_index = 5;
-    const std::string file_path = "../input/granite.rho_u.txt";
+    //define parameters for the interpolation function
+    std::vector<double> var1_vector; //this currently stores density from "granite.rho_u.txt"
+    std::vector<double> var2_vector; //this currently stores internal energy from "granite.rho_u.txt"
+    std::vector<double> var3_vector; //this currently stores entropy from "granite.rho_u.txt"
+    const int val1_property_index = 0; //this is the column index value of density in the "granite.rho_u.txt" file
+    const int val2_property_index = 1; //this is the column index value of internal energy in the "granite.rho_u.txt" file
+    const int val3_property_index = 5; //this is the column index value of entropy in the "granite.rho_u.txt" file
+    const std::string file_path = "../input/granite.rho_u.txt"; //the relative path to the "granite.rho_u.txt" file
 
-    std::vector<std::vector<std::array<double, 6>>> eos_data = io::readANEOSfile::readfile(var1_vector, var2_vector, var3_vector, file_path, property_index);
-    double interpolated_value = BilinearInterpolation::interpolate( 1.91611522E+03, 9.84467337E+04, var1_vector, var2_vector, var3_vector, property_index, eos_data);
+    //read in the interpolation file
+    std::vector<std::vector<std::array<double, 6>>> eos_data = io::readANEOSfile::readfile(var1_vector, var2_vector,
+            var3_vector, file_path, val1_property_index, val2_property_index, val3_property_index);
+    //perform the interpolation
+    double interpolated_value = BilinearInterpolation::interpolate( 1.91611522E+03, 9.84467337E+04, var1_vector, var2_vector, var3_vector, val3_property_index, eos_data);
+
     std::cout << std::to_string(interpolated_value) << std::endl;
     
 //    for (double & i : var1_vector)
