@@ -10,9 +10,10 @@ namespace io{
     class readANEOSfile {
     public:
         static std::vector<std::vector<std::array<double, 6>>> readfile(
-                std::vector<double> &var1_vect,
-                std::vector<double> &var2_vect,
-                std::vector<double> &var3_vect,
+                std::vector<double> &var1_vector,
+                std::vector<double> &var2_vector,
+                std::vector<double> &var3_vector,
+                const std::string &file_path,
                 const int property_index
                 ) {
 
@@ -26,7 +27,7 @@ namespace io{
 
             std::string();
             std::ifstream input;
-            input.open("../input/granite.rho_u.txt", std::ios::in);
+            input.open(file_path, std::ios::in);
 
             if (input.is_open()) {
                 std::string line;
@@ -68,11 +69,11 @@ namespace io{
                         eos_data[line_index][column_index][field_index] = tmp;
 
                         if (column_index == 0 && field_index == 0)
-                        var1_vect.push_back(tmp);
+                            var1_vector.push_back(tmp);
                         if (line_index == 0 && field_index == 1)
-                            var2_vect.push_back(tmp);
+                            var2_vector.push_back(tmp);
                         if (line_index == 0 && field_index == property_index)
-                            var3_vect.push_back(tmp);
+                            var3_vector.push_back(tmp);
 
                         ++field_index;
                     }
