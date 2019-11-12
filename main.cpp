@@ -16,7 +16,7 @@ int main() {
     const std::string file_path = "../input/granite.rho_u.txt"; //the relative path to the "granite.rho_u.txt" file
 
     //read in the interpolation file
-    std::vector<std::vector<std::array<double, 6>>> eos_data = io::readANEOSfile::readfile(var1_vector, var2_vector,
+    std::vector<std::vector<std::array<double, 6>>> eos_data = readANEOSfile::readfile(var1_vector, var2_vector,
             var3_vector, file_path, val1_property_index, val2_property_index, val3_property_index);
     //perform the interpolation
     double interpolated_value = BilinearInterpolation::interpolate( 1.91611522E+03, 9.84467337E+04, var1_vector, var2_vector, var3_vector, val3_property_index, eos_data);
