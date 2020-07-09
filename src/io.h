@@ -8,14 +8,26 @@
 class readANEOSfile {
 public:
     static std::vector<std::vector<std::array<double, 6>>> readfile(
-            std::vector<double> &var1_vector,
-            std::vector<double> &var2_vector,
-            std::vector<double> &var3_vector,
-            const std::string &file_path,
-            const int val1_property_index,
-            const int val2_property_index,
-            const int val3_property_index
-            ) {
+            std::vector<double> &var1_vector, // density
+    std::vector<double> &var2_vector, // energy
+    std::vector<double> &var3_vector, // entropy
+    std::vector<double> &var4_vector, // temperature
+    std::vector<double> &var5_vector, // pressure
+    std::vector<double> &var6_vector, // soundspeed
+    std::vector<double> &var1_vector_full, // density
+    std::vector<double> &var2_vector_full, // energy
+    std::vector<double> &var3_vector_full, // entropy
+    std::vector<double> &var4_vector_full, // temperature
+    std::vector<double> &var5_vector_full, // pressure
+    std::vector<double> &var6_vector_full, // soundspeed
+    const std::string &file_path,
+    const int val1_property_index, // density index
+    const int val2_property_index, // energy index
+    const int val3_property_index, // entropy index
+    const int val4_property_index, // temperature index
+    const int val5_property_index, // pressure index
+    const int val6_property_index // soundspeed index
+    ) {
 
         std::vector<std::vector<std::array<double, 6>>> eos_data;
 
@@ -74,6 +86,25 @@ public:
                         var2_vector.push_back(tmp);
                     if (line_index == 0 && field_index == val3_property_index)
                         var3_vector.push_back(tmp);
+                    if (line_index == 0 && field_index == val4_property_index)
+                        var4_vector.push_back(tmp);
+                    if (line_index == 0 && field_index == val5_property_index)
+                        var5_vector.push_back(tmp);
+                    if (line_index == 0 && field_index == val6_property_index)
+                        var6_vector.push_back(tmp);
+
+                    if (field_index == val1_property_index)
+                        var1_vector_full.push_back(tmp);
+                    if (field_index == val2_property_index)
+                        var2_vector_full.push_back(tmp);
+                    if (field_index == val3_property_index)
+                        var3_vector_full.push_back(tmp);
+                    if (field_index == val4_property_index)
+                        var4_vector_full.push_back(tmp);
+                    if (field_index == val5_property_index)
+                        var5_vector_full.push_back(tmp);
+                    if (field_index == val6_property_index)
+                        var6_vector_full.push_back(tmp);
 
                     ++field_index;
                 }
