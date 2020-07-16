@@ -1,9 +1,20 @@
 #pragma once
 
+#include <cstdlib>
 #include <sstream>
 #include <vector>
 #include <iostream>
+#include <algorithm>
 #include "array"
+
+template<typename T>
+std::vector<T> slice(std::vector<T> const &v, int m, int n) {
+    auto first = v.cbegin() + m;
+    auto last = v.cbegin() + n + 1;
+
+    std::vector<T> vec(first, last);
+    return vec;
+}
 
 class RestrictedBilinearInterpolation {
 private:
@@ -106,7 +117,7 @@ private:
                 min_distance = distance;
                 min_distance_index = a;
                 initial_calc = false;
-            } else if (abs(distance) < abs(min_distance)) {
+            } else if (std::abs(distance) < std::abs(min_distance)) {
                 min_distance = distance;
                 min_distance_index = a;
             }
@@ -182,6 +193,17 @@ private:
             double &q1,
             double &q2
     ) {
+
+        std::cout << "linear interpolation parameters given:" << std::endl;
+        std::cout << x1 << std::endl;
+        std::cout << x2 << std::endl;
+        std::cout << x << std::endl;
+        std::cout << q1 << std::endl;
+        std::cout << q2 << std::endl;
+        std::cout << (((x2 - x) / (x2 - x1)) * q1) << std::endl;
+        std::cout << (((x - x1) / (x2 - x1)) * q2) << std::endl;
+        std::cout << "--------------" << std::endl;
+
         double f = (((x2 - x) / (x2 - x1)) * q1) + (((x - x1) / (x2 - x1)) * q2);
 
         return f;
@@ -230,22 +252,22 @@ public:
                                                                  restricted_index_pair_upper_bound.first,
                                                                  restricted_index_pair_upper_bound.second);
 
-//        std::cout << "********************" << std::endl;
-//        std::cout << val1 << std::endl;
-//        std::cout << val2 << std::endl;
-//        std::cout << var1_vector_lower_neighbor << std::endl;
-//        std::cout << var1_vector_upper_neighbor << std::endl;
-//        std::cout << var2_vector_restricted_lower[neighbors_lower.first] << std::endl;
-//        std::cout << var2_vector_restricted_lower[neighbors_lower.second] << std::endl;
-//        std::cout << var2_vector_restricted_lower[neighbors_upper.first] << std::endl;
-//        std::cout << var2_vector_restricted_lower[neighbors_upper.second] << std::endl;
-//        std::cout << val3_vector_restricted_lower[neighbors_lower.first] << std::endl;
-//        std::cout << val3_vector_restricted_lower[neighbors_lower.second] << std::endl;
-//        std::cout << val3_vector_restricted_lower[neighbors_upper.first] << std::endl;
-//        std::cout << val3_vector_restricted_lower[neighbors_upper.second] << std::endl;
-//        std::cout << val1 << std::endl;
-//        std::cout << val2 << std::endl;
-//        std::cout << "~~~~~~~~~~~~~~~~~~~~" << std::endl;
+        std::cout << "********************" << std::endl;
+        std::cout << val1 << std::endl;
+        std::cout << val2 << std::endl;
+        std::cout << var1_vector_lower_neighbor << std::endl;
+        std::cout << var1_vector_upper_neighbor << std::endl;
+        std::cout << var2_vector_restricted_lower[neighbors_lower.first] << std::endl;
+        std::cout << var2_vector_restricted_lower[neighbors_lower.second] << std::endl;
+        std::cout << var2_vector_restricted_lower[neighbors_upper.first] << std::endl;
+        std::cout << var2_vector_restricted_lower[neighbors_upper.second] << std::endl;
+        std::cout << val3_vector_restricted_lower[neighbors_lower.first] << std::endl;
+        std::cout << val3_vector_restricted_lower[neighbors_lower.second] << std::endl;
+        std::cout << val3_vector_restricted_lower[neighbors_upper.first] << std::endl;
+        std::cout << val3_vector_restricted_lower[neighbors_upper.second] << std::endl;
+        std::cout << val1 << std::endl;
+        std::cout << val2 << std::endl;
+        std::cout << "~~~~~~~~~~~~~~~~~~~~" << std::endl;
 
         const double interpolated_value = interpolate_restricted(
                 var1_vector_lower_neighbor,
