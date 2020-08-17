@@ -23,7 +23,7 @@ int main() {
     std::vector<double> full_soundspeeds;
 
 //    const std::string filename = "../input/duniteS2.rho_u.txt";
-    const std::string filename = "../input/iron___.rho_u.txt";
+    const std::string filename = "../input/ironS2.rho_u.txt";
 
     //read in the interpolation file
     std::vector < std::vector < std::array < double, 6 >> > eos_data = readANEOSfile::readfile(densities, energies,
@@ -38,12 +38,12 @@ int main() {
                                                                                                filename, 0, 1, 5, 2, 3,
                                                                                                4);
     //perform the interpolation
-    double dens = 12578.1;
-    double eng = 3.70774e+06;
+    double dens = 3147.378702;
+    double eng = 0.0;
     double interpolated_value = RestrictedBilinearInterpolation::interpolate(dens, eng, full_densities, full_energies,
-                                                                             full_entropies, 5, eos_data, grid_size);
+                                                                             full_pressures, 3, eos_data, grid_size);
 
-    std::cout << std::to_string(interpolated_value) << std::endl;
+    std::cout << std::to_string(interpolated_value * 1e-9) << std::endl;
 
     return 0;
 }

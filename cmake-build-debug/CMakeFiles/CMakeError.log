@@ -9,3 +9,14 @@ ld: library not found for -lSystem
 collect2: error: ld returned 1 exit status
 
 
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /opt/local/bin/g++-mp-8 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+ld: library not found for -lSystem
+collect2: error: ld returned 1 exit status
+
+

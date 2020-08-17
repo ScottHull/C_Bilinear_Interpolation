@@ -202,6 +202,7 @@ private:
         std::cout << q2 << std::endl;
         std::cout << (((x2 - x) / (x2 - x1)) * q1) << std::endl;
         std::cout << (((x - x1) / (x2 - x1)) * q2) << std::endl;
+        std::cout << (((x2 - x) / (x2 - x1)) * q1) + (((x - x1) / (x2 - x1)) * q2) << std::endl;
         std::cout << "--------------" << std::endl;
 
         double f = (((x2 - x) / (x2 - x1)) * q1) + (((x - x1) / (x2 - x1)) * q2);
@@ -251,7 +252,6 @@ public:
         std::vector<double> val3_vector_restricted_upper = slice(val3_vector,
                                                                  restricted_index_pair_upper_bound.first,
                                                                  restricted_index_pair_upper_bound.second);
-
         std::cout << "********************" << std::endl;
         std::cout << val1 << std::endl;
         std::cout << val2 << std::endl;
@@ -263,8 +263,8 @@ public:
         std::cout << var2_vector_restricted_lower[neighbors_upper.second] << std::endl;
         std::cout << val3_vector_restricted_lower[neighbors_lower.first] << std::endl;
         std::cout << val3_vector_restricted_lower[neighbors_lower.second] << std::endl;
-        std::cout << val3_vector_restricted_lower[neighbors_upper.first] << std::endl;
-        std::cout << val3_vector_restricted_lower[neighbors_upper.second] << std::endl;
+        std::cout << val3_vector_restricted_upper[neighbors_upper.first] << std::endl;
+        std::cout << val3_vector_restricted_upper[neighbors_upper.second] << std::endl;
         std::cout << val1 << std::endl;
         std::cout << val2 << std::endl;
         std::cout << "~~~~~~~~~~~~~~~~~~~~" << std::endl;
